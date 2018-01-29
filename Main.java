@@ -26,6 +26,7 @@ public class Main {
             int j=0;
             System.out.println("Give a letter:");
             letter = scanner.next().charAt(0);
+            //check if letter is already used
             while (trials.contains(letter)){
                 System.out.println("You have already tried this letter! \nYou are stupid. \n");
                 System.out.println("Give a letter again:");
@@ -34,9 +35,11 @@ public class Main {
             }
             trials.add(letter);
             int idx=secret.indexOf(letter);
+            //checks if letter is in the word and its position
             if (idx>=0){
                 reveal[idx]=letter;
                 correct++;
+                //check if letter exists multiple times in the word
                 for(j=idx+1;j<number;j++){
                     if(secret.charAt(j)==letter){
                         reveal[j]=letter;
@@ -54,8 +57,9 @@ public class Main {
                 mistakes++;
                 System.out.println("Watch out: You have done "+mistakes+" mistakes so far.");
             }
-        }//end while mistakes and word not finished
-
+        }
+        
+        //ending messages
         if (mistakes==6){
             System.out.println("Too many mistakes! :( ");
             System.out.println("Maybe an other time my friend...");
